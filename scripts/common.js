@@ -47,9 +47,6 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
     return false;
 
 }).delegate('#saleOrderSelectCustomer', 'pageshow', function() {
-    onResize();
-    $(window).off('resize').on('resize', onResize);
-    bindEvents();
     return false;
 }).delegate('#saleOrderEntry', 'pageshow', function() {
 	var selectedOrder;
@@ -77,7 +74,6 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
         $(node).addClass("added");
         $(node).appendTo("#ui-items");
 	});
-    bindEvents();
     return false;
 }).delegate('#saleOrders', 'pageshow', function() {
 	var orders = Store.get("order." + Store.get("user").Userid);
@@ -112,7 +108,6 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
 	}
 	$("#totalOrders").html("Total Orders : " + totalOrders);
 	$("#todaysOrders").html("Todays Orders : " + todaysOrders);
-    bindEvents();
     return false;
 }).delegate('#login', 'pageshow', function() {
 	$("#btnLogin").unbind('tap',login).bind('tap',login);
@@ -123,7 +118,6 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
  			stayloggedin = 180000;
  		} 		
  	});
-    bindEvents();
     return false;
 }).delegate('#settings', 'pageshow', function() {
     bindEvents();
@@ -138,7 +132,6 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
 		catch(e){
 		}
 	});
-    bindEvents();
     return false;
 }).delegate('#enterProducts', 'pageshow', function() {
 	var category = Store.get("category." + Store.get("user").Userid);
