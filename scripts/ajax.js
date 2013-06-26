@@ -155,7 +155,8 @@ var orders = {
 	pendingOrders : [],
 	products : [],
 	savedOrders : [],
-	viewOrder : function(){
+	viewOrder : function(event){
+		event.preventDefault();
 		editMode = false;
 		var storeId = $(this).find('input.storeId').val();
 		var serialNo = $(this).find('input.serialNo').val();
@@ -214,7 +215,8 @@ var orders = {
         });
         return false;
 	},
-	removeItem : function (){
+	removeItem : function (event){
+		event.preventDefault();
 		var productId = $(this).parent().find(".productId").val();
 		var selectedIndex = getObject(orders.pendingOrders,'selectedOrder',true);
 		var selectedItem = getObject(orders.pendingOrders[selectedIndex].items,'productId',productId); 
@@ -286,6 +288,7 @@ var orders = {
 		}
 	},
 	addItem : function(){
+		//event.preventDefault();
 		var selectedIndex = getObject(orders.pendingOrders,'selectedOrder',true);
 		var selectedItem = getObject(orders.pendingOrders[selectedIndex].items,'productId',$("#productId").val()); 
 		if(selectedItem){
@@ -312,7 +315,8 @@ var orders = {
 		
 		return false;
 	},
-	finish : function(){
+	finish : function(event){
+		event.preventDefault();	
 		if($.trim($("#product").val()) == '' && ($.trim($("#quantity").val()) == '' || $.trim($("#offerquantity").val()) == '' ) ){
 			$.mobile.changePage( "#saleOrderEntry", {
            		transition: "slide",
@@ -335,7 +339,8 @@ var orders = {
 		}
         return false;
 	},
-	saveOrder : function(){
+	saveOrder : function(event){
+		event.preventDefault();
 		var selectedIndex = getObject(orders.pendingOrders,'selectedOrder',true);
 		if(orders.pendingOrders[selectedIndex].items.length == 0){
 			navigator.notification.alert("No item to save",callBackFunc, 'Error');
@@ -348,7 +353,8 @@ var orders = {
 		orders.pendingOrders.splice(selectedIndex,1);
 		return false;
 	},
-	selectCategory : function(){
+	selectCategory : function(event){
+		event.preventDefault();
 		$("#product").val("");
 		$('#ui-results-products').children(".added").remove();
 		categorySelected = $(this).find("option:selected").text();
@@ -356,7 +362,8 @@ var orders = {
 		$("#product").focus();
 		return false;
 	},
-	searchProduct : function(){
+	searchProduct : function(event){
+		event.preventDefault();
 		if($("#category option:selected").text() == 'Category'){
 			navigator.notification.alert("Select Category first",callBackFunc, 'Error');
 			return false;

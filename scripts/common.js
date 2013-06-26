@@ -144,6 +144,7 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
 }).delegate('#enterProducts', 'pagebeforeshow', function() {
 //	$("#quantity").numeric();
 	//$("#offerquantity").numeric();	
+	alert("pageshow");
 	var category = Store.get("category." + Store.get("user").Userid);
 	$("#category").html("");
 	$("<option>Category</option>").appendTo("#category");
@@ -159,6 +160,7 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
 		$("#btnAddNext").closest("div").hide();
 		$("#btnFinish").closest("div").hide();	
 	}	
+	alert("after loop");
     onResize();
     $(window).off('resize').on('resize', onResize);
     bindEvents();
@@ -166,7 +168,8 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
 });
 
 
-function searchCustomer(){
+function searchCustomer(event){
+	event.preventDefault();
 	var customers = Store.get("customers." + Store.get("user").Userid);
 	if($.trim($(this).val()).length == 0){
 		return false;
@@ -175,7 +178,8 @@ function searchCustomer(){
 	app.loadPage(customers);
 	return false;
 }
-function refreshAppData(){
+function refreshAppData(event){
+	event.preventDefault();
 	$("#sure .sure-1").text("Are You Sure?");
   	$("#sure .sure-2").text("Are you sure refresh application data?");	
 	$('#sure').popup("open");
@@ -190,7 +194,8 @@ function refreshAppData(){
 	return false;	
 }
 
-function syncOrders(){
+function syncOrders(event){
+	event.preventDefault();
 	ordersSaved = 0;
 	ordersSynced = 0;
 	var orders = Store.get("order." + Store.get("user").Userid);
@@ -320,7 +325,8 @@ function bindEvents() {
 	$("#product").unbind('keyup',orders.searchProduct).bind('keyup',orders.searchProduct);
 
 }
-function logout(){
+function logout(event){
+	event.preventDefault();
 	Store.clear("user");
 	$.mobile.changePage( "#login", {
     	transition: "slide",
@@ -330,14 +336,16 @@ function logout(){
     return false;
 }
 
-function showEditPopUp(){
+function showEditPopUp(event){
+	event.preventDefault();
 	$('#editItem').find(".ui-first-child").html($(this).find(".productName").html());
 	$('#editItem').find(".productId").val($(this).find(".productId").val());
 	$('#editItem').popup("open");
 	return false;
 }
 
-function showViewPopUp(){
+function showViewPopUp(event){
+	event.preventDefault();
 	$('#viewItem').find(".ui-first-child").html($(this).find(".productName").html());
 	$('#viewItem').find(".productId").val($(this).find(".productId").val());
 	$('#viewItem').popup("open");
@@ -358,16 +366,13 @@ function onResize() {
         landscapeScreenHeight = $(window).height();
     }
     if ((window.orientation === 0 || window.orientation === 180) && ((window.innerHeight + tolerance) < portraitScreenHeight)) {
-        //$("[data-role=footer]").hide();
         $("[data-role=footer]").removeAttr("data-position");
     }
     else if ((window.innerHeight + tolerance) < landscapeScreenHeight) {
 	    $("[data-role=footer]").removeAttr("data-position");
-        //$("[data-role=footer]").hide();
     }
     else {
     	$("[data-role=footer]").attr("data-position","fixed");
-    //    $("[data-role=footer]").show();
     }
     $("#searchResults").height($(window).height() - $("#searchResults").offset().top - $("#footer").height() - 17);
     $(".ui-link-inherit").width($(window).width() - 100);
@@ -388,7 +393,8 @@ function navigate(event) {
     return false;
 }
 
-function collapse() {
+function collapse(event) {
+	event.preventDefault();
     if ($(this).hasClass('ui-collapsible-collapsed')) {
         $(this).removeClass('ui-collapsible-collapsed');
         $(this).find("span.ui-icon").removeClass("ui-icon-plus");
