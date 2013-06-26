@@ -268,20 +268,7 @@ function unBindEvents(){
 }
 
 function bindEvents() {
-	$("#btnExit").unbind("tap").bind("tap",function(e){
-		e.preventDefault();
-		try{
-        	//navigator.app.exitApp();
-        	}catch(eq){
-        	alert(eq);
-        	}
-        			try{
-        	navigator.device.exitApp();
-        	}catch(eq){
-        	alert(eq);
-        	}
-			
-	});
+	
 	$(".back").unbind("tap").bind("tap", {page: "#saleOrderSelectCustomer"}, navigate);   
 	
 	$("#refreshAppData").off('tap').on('tap', refreshAppData);
@@ -387,8 +374,8 @@ function onResize() {
 }
 
 function navigate(event) {
-    $.mobile.showPageLoadingMsg();
     event.preventDefault();
+    $.mobile.showPageLoadingMsg();
     var transition = (event.data.transition === undefined) ? "slide" : event.data.transition;
     var hash = (event.data.hash === undefined) ? true : event.data.hash;
     var reverse = (event.data.reverse === undefined) ? false : event.data.reverse;
