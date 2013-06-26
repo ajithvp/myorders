@@ -268,7 +268,7 @@ function unBindEvents(){
 }
 
 function bindEvents() {
-	$("#btnExit").bind("tap",function(e){
+	$("#btnExit").unbind("tap").bind("tap",function(e){
 		e.preventDefault();
 		try{
         	//navigator.app.exitApp();

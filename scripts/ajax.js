@@ -228,7 +228,6 @@ var orders = {
 		return false;
 	},
 	addProduct : function(){		
-		alert("test");
 		if($(this).hasClass('addproduct')){
 			$.mobile.changePage( "#enterProducts", {
             	transition: "slide",
