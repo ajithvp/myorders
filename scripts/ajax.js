@@ -228,19 +228,23 @@ var orders = {
 		return false;
 	},
 	addProduct : function(){		
+		alert("addproduct")
 		if($(this).hasClass('addproduct')){
 			$.mobile.changePage( "#enterProducts", {
             	transition: "slide",
             	reverse: false,
             	changeHash: true
         	});
+        	alert("addproduct buton");
         	$("#enterProducts").find("#category").val(categorySelected).change();
 			$("#enterProducts").find("#productId").val("");
 			$("#enterProducts").find("#product").val("");
 			$("#enterProducts").find("#quantity").val("");
 			$("#enterProducts").find("#offerquantity").val("");	
+			alert("addproduct buton");
 		}else{
 			if($(this).parent().find(".productId").val() !== "" ){
+				alert("edit");
 				var selectedIndex;
 				var selectedItem;
 				var item;
@@ -259,22 +263,27 @@ var orders = {
             		reverse: true,
             		changeHash: true
         		});
+        		alert("after transition");
 				$("#enterProducts").find("#category").val(item.category).change();
 				$("#enterProducts").find("#productId").val(item.productId);
 				$("#enterProducts").find("#product").val(item.productName);
 				$("#enterProducts").find("#quantity").val(item.quantity);
 				$("#enterProducts").find("#offerquantity").val(item.offerquantity);	
+				alert("after setting values");
 			}else{
+			alert("else");
 				$.mobile.changePage( "#enterProducts", {
             		transition: "slide",
             		reverse: false,
             		changeHash: true
         		});
+        		alert("after transition");
         		$("#enterProducts").find("#category").val(categorySelected).change();
 				$("#enterProducts").find("#productId").val("");
 				$("#enterProducts").find("#product").val("");
 				$("#enterProducts").find("#quantity").val("");
 				$("#enterProducts").find("#offerquantity").val("");	
+				alert("setting values");
         	}
 		}
 		
@@ -428,7 +437,8 @@ function onSuccess(data){
 }
 
 
-function login() {	
+function login(event) {	
+	event.preventDefault();
 	var username = $("#txtUserName").val().trim();
     var password = $("#txtPassword").val().trim();
    
