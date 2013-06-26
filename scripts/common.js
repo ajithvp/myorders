@@ -141,7 +141,7 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
     $(window).off('resize').on('resize', onResize);
     bindEvents();
     return false;
-}).delegate('#enterProducts', 'pagebeforeshow', function() {
+}).delegate('#enterProducts', 'pageshow', function() {
 //	$("#quantity").numeric();
 	//$("#offerquantity").numeric();	
 	alert("pageshow");
