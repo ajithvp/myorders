@@ -1,3 +1,4 @@
+var categorySelected = "Category";
 var app = {
 	initialize : function (){
 		var self = this;
@@ -226,18 +227,18 @@ var orders = {
 		});
 		return false;
 	},
-	addProduct : function(){
-		//$("#enterProducts").find("#category").val("Category").change();
-		$("#enterProducts").find("#productId").val("");
-		$("#enterProducts").find("#product").val("");
-		$("#enterProducts").find("#quantity").val("");
-		$("#enterProducts").find("#offerquantity").val("");	
+	addProduct : function(){		
 		if($(this).hasClass('addproduct')){
 			$.mobile.changePage( "#enterProducts", {
             	transition: "slide",
             	reverse: false,
             	changeHash: true
         	});
+        	$("#enterProducts").find("#category").val(categorySelected).change();
+			$("#enterProducts").find("#productId").val("");
+			$("#enterProducts").find("#product").val("");
+			$("#enterProducts").find("#quantity").val("");
+			$("#enterProducts").find("#offerquantity").val("");	
 		}else{
 			if($(this).parent().find(".productId").val() !== "" ){
 				var selectedIndex;
@@ -269,6 +270,11 @@ var orders = {
             		reverse: false,
             		changeHash: true
         		});
+        		$("#enterProducts").find("#category").val(categorySelected).change();
+				$("#enterProducts").find("#productId").val("");
+				$("#enterProducts").find("#product").val("");
+				$("#enterProducts").find("#quantity").val("");
+				$("#enterProducts").find("#offerquantity").val("");	
         	}
 		}
 		
@@ -319,27 +325,32 @@ var orders = {
 			$("#quantity").val('');
 			$("#offerquantity").val('');
 		}catch(e){
-			try{
 			navigator.notification.alert(e,callBackFunc, 'Error');
-			}catch(er){
-			alert(er)
-			}
 			throw e;
 		}
 		
 		return false;
 	},
 	finish : function(){
-		try{
-			orders.addItem();
+		if($.trim($("#product").val()) == '' && ($.trim($("#quantity").val()) == '' || $.trim($("#offerquantity").val()) == '' ) ){
 			$.mobile.changePage( "#saleOrderEntry", {
-            	transition: "slide",
-            	reverse: false,
-            	changeHash: true
+           		transition: "slide",
+           		reverse: false,
+           		changeHash: true
         	});
 		}
-		catch(e){
-			return false;
+		else{
+			try{
+				orders.addItem();
+				$.mobile.changePage( "#saleOrderEntry", {
+            		transition: "slide",
+            		reverse: false,
+            		changeHash: true
+        		});
+			}
+			catch(e){
+				return false;
+			}
 		}
         return false;
 	},
@@ -359,7 +370,7 @@ var orders = {
 	selectCategory : function(){
 		$("#product").val("");
 		$('#ui-results-products').children(".added").remove();
-		var categorySelected = $(this).find("option:selected").text();
+		categorySelected = $(this).find("option:selected").text();
 		orders.products = getObjects(Store.get("products." + Store.get("user").Userid),"pmCategory",categorySelected,"exact");
 		$("#product").focus();
 		return false;
