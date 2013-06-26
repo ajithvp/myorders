@@ -271,11 +271,13 @@ function bindEvents() {
 	$("#btnExit").bind("tap",function(e){
 		e.preventDefault();
 		try{
-        	navigator.app.exitApp();}catch(eq){
+        	//navigator.app.exitApp();
+        	}catch(eq){
         	alert(eq);
         	}
         			try{
-        	navigator.device.exitApp();}catch(eq){
+        	navigator.device.exitApp();
+        	}catch(eq){
         	alert(eq);
         	}
 			
