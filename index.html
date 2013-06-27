@@ -34,8 +34,7 @@
     </div>
     <div data-role="content">
         <fieldset >
-            <div class="bar">Select Customer</div>
-            <input type="search" data-theme="a" id="searchCustomer" placeholder="Search"  />
+            <input type="search" data-theme="a" id="searchCustomer" placeholder="Search Customer"  />
             <div class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed">
                 <h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
                     <a href="#" class="ui-collapsible-heading-toggle ui-btn ui-fullsize ui-btn-icon-left ui-btn-up-b" >
@@ -86,14 +85,6 @@
                     </a>
                 </li>
                 <li class='ui-block-b'>
-                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
-                        <span class="ui-btn-inner">
-                            <span class="ui-btn-text">Settings</span>
-                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
-                        </span>
-                    </a>
-                </li>
-                <li class='ui-block-d'>
                     <a href="#"  class="orders ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Orders</span>
@@ -102,6 +93,22 @@
                     </a>
                 </li>
                 <li class='ui-block-c'>
+                    <a href="#"  class="drafts ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Drafts</span>
+                            <span class="ui-icon ui-icon-grid ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-d'>
+                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Settings</span>
+                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-e'>
                     <a href="#"  class="logout ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Logout</span>
@@ -109,11 +116,100 @@
                         </span>
                     </a>
                 </li>
+                
             </ul>
         </div>
     </div>
 </div>
 
+<div data-role="page" id="drafts" data-theme="b">
+    <div data-role="header" data-theme="b">
+        <h1>
+            Welcome
+        </h1>
+        <a href="#" class="back ui-btn-left ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-a" >
+            <span class="ui-btn-inner ui-btn-corner-all">
+                <span class="ui-btn-text">Back</span>
+                <span class="ui-icon ui-icon-arrow-l ui-icon-shadow">&nbsp;</span>
+            </span>
+        </a>
+
+    </div>
+
+    <div data-role="header" data-theme="c">
+        <div class="bar">Sales Order - Drafts - GetMyOrder</div>
+    </div>
+    <div data-role="content">
+        <fieldset >
+            <div id="drafts" >
+                <ul class="ui-listview ui-listview-inset ui-corner-all" id="ui-drafts" >
+                    <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-corner-all ui-btn-up-a template"  >
+                        <div class="ui-btn-inner ui-li ui-corner-all">
+                            <div class="ui-btn-text">
+                                <a class="customer ui-link-inherit">
+                                    <strong class = "main storeName"></strong>
+                                    <br/>
+                                    <span class = "sub1" >Code:</span><span class = "sub1 storeCode" ></span>
+                                    <span class = "sub2 location" ></span>
+                                    <input type = "hidden" class = "hidden storeId" />
+                                </a>
+                            </div>
+                            <span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </fieldset>
+    </div>
+
+    <div data-role="footer" id="footer" data-theme="c" data-position="fixed">
+        <div class="ui-navbar" >
+            <ul class='ui-grid-d'>
+                <li class='ui-block-a'>
+                    <a href="#"  class="home ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Home</span>
+                            <span class="ui-icon ui-icon-home ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-b'>
+                    <a href="#"  class="orders ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Orders</span>
+                            <span class="ui-icon  ui-icon-bars ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-c'>
+                    <a href="#"  class="drafts ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Drafts</span>
+                            <span class="ui-icon ui-icon-grid ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-d'>
+                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Settings</span>
+                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-e'>
+                    <a href="#"  class="logout ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Logout</span>
+                            <span class="ui-icon ui-icon- ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div data-role="page" id="login" data-theme="b">
     <div data-role="header" data-theme="b">
@@ -211,14 +307,6 @@
                     </a>
                 </li>
                 <li class='ui-block-b'>
-                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
-                        <span class="ui-btn-inner">
-                            <span class="ui-btn-text">Settings</span>
-                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
-                        </span>
-                    </a>
-                </li> 
-                <li class='ui-block-d'>
                     <a href="#"  class="orders ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Orders</span>
@@ -227,6 +315,22 @@
                     </a>
                 </li>
                 <li class='ui-block-c'>
+                    <a href="#"  class="drafts ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Drafts</span>
+                            <span class="ui-icon ui-icon-grid ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-d'>
+                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Settings</span>
+                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-e'>
                     <a href="#"  class="logout ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Logout</span>
@@ -234,6 +338,7 @@
                         </span>
                     </a>
                 </li>
+                
             </ul>
         </div>
     </div>
@@ -285,14 +390,6 @@
                     </a>
                 </li>
                 <li class='ui-block-b'>
-                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
-                        <span class="ui-btn-inner">
-                            <span class="ui-btn-text">Settings</span>
-                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
-                        </span>
-                    </a>
-                </li> 
-                <li class='ui-block-d'>
                     <a href="#"  class="orders ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Orders</span>
@@ -301,6 +398,22 @@
                     </a>
                 </li>
                 <li class='ui-block-c'>
+                    <a href="#"  class="drafts ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Drafts</span>
+                            <span class="ui-icon ui-icon-grid ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-d'>
+                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Settings</span>
+                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-e'>
                     <a href="#"  class="logout ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Logout</span>
@@ -308,6 +421,7 @@
                         </span>
                     </a>
                 </li>
+                
             </ul>
         </div>
     </div>
@@ -339,7 +453,7 @@
                     <a class="ui-link-inherit" >
                         <strong style="color:#FFFFFF; " class = "storeName"></strong>
                         <br/>
-                        <span style="font-size:12px;" class = "storeCode" ></span>
+                        <span style="font-size:11px;" class = "storeCode" ></span>
                         <span class = "location" style="font-size:12px;" ></span>
                         <br/>
                         <span style="font-size:12px;" class = "noItems" ></span>
@@ -364,8 +478,9 @@
                                 <a  class="viewItem editItem ui-link-inherit" >
                                     <strong class = "productName" ></strong>
                                     <br/>
-                                    <span style="font-size:12px;color:gray;" class = "sub1 category" ></span>
+                                    <span class = "sub2 unitprice" >gdf</span>
                                     <span class = "sub2 quantity" ></span>
+                                    <span style="font-size:12px;color:gray;" class = "sub1 category" ></span>
                                     <input type = "hidden" class = "hidden productId" />
                                 </a>
                                
@@ -415,14 +530,6 @@
                     </a>
                 </li>
                 <li class='ui-block-b'>
-                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
-                        <span class="ui-btn-inner">
-                            <span class="ui-btn-text">Settings</span>
-                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
-                        </span>
-                    </a>
-                </li>
-                <li class='ui-block-d'> 
                     <a href="#"  class="orders ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Orders</span>
@@ -431,6 +538,22 @@
                     </a>
                 </li>
                 <li class='ui-block-c'>
+                    <a href="#"  class="drafts ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Drafts</span>
+                            <span class="ui-icon ui-icon-grid ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-d'>
+                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Settings</span>
+                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-e'>
                     <a href="#"  class="logout ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Logout</span>
@@ -438,6 +561,7 @@
                         </span>
                     </a>
                 </li>
+                
             </ul>
         </div>
     </div>
@@ -575,14 +699,6 @@
                     </a>
                 </li>
                 <li class='ui-block-b'>
-                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
-                        <span class="ui-btn-inner">
-                            <span class="ui-btn-text">Settings</span>
-                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
-                        </span>
-                    </a>
-                </li>
-                <li class='ui-block-d'>
                     <a href="#"  class="orders ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Orders</span>
@@ -591,6 +707,22 @@
                     </a>
                 </li>
                 <li class='ui-block-c'>
+                    <a href="#"  class="drafts ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Drafts</span>
+                            <span class="ui-icon ui-icon-grid ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-d'>
+                    <a href="#"  class="settings ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Settings</span>
+                            <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
+                        </span>
+                    </a>
+                </li>
+                <li class='ui-block-e'>
                     <a href="#"  class="logout ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-d ">
                         <span class="ui-btn-inner">
                             <span class="ui-btn-text">Logout</span>
@@ -598,6 +730,7 @@
                         </span>
                     </a>
                 </li>
+                
             </ul>
         </div>
     </div>

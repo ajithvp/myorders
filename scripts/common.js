@@ -129,6 +129,23 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
  		} 		
  	});
     return false;
+}).delegate('#drafts', 'pageshow', function() {
+	customers = orders.pendingOrders;
+	var node,store,storename,location;
+    $('#ui-drafts').children(".added").remove();  
+    $.each(customers,function(i,record){
+        node = $(".template",$("#ui-drafts")).clone().removeClass("template");
+        $(".storeName",node).html(record.storeName);
+        $(".storeCode",node).html(record.storeCode);
+        $(".location",node).html(record.location);
+        $(".storeId",node).val(record.storeId);
+        $(node).addClass("added");
+        $(node).appendTo("#ui-drafts");
+        $("#ui-results").show();
+    });
+    $(".customer").unbind('tap', orders.selectCustomer);
+   	$(".customer").bind("tap", {page: "#saleOrderEntry"}, orders.selectCustomer);
+    return false;
 }).delegate('#settings', 'pageshow', function() {
     return false;
 }).delegate('#savedOrder', 'pageshow', function() {
@@ -234,6 +251,7 @@ function unBindEvents(){
     $(".logout").unbind("tap", logout);
     
     $(".settings").unbind("tap");
+    $(".drafts").unbind("tap");
     
     $("#btnCancel").unbind("tap");    
 
@@ -282,6 +300,9 @@ function bindEvents() {
     $(".logout").unbind("tap", logout).bind("tap", logout);
     
     $(".settings").unbind("tap").bind("tap", {page: "#settings"}, navigate);
+    
+    $(".drafts").unbind("tap").bind("tap", {page: "#drafts"}, navigate);
+    
     
     $("#btnCancel").unbind("tap").bind("tap", {page: "#saleOrderSelectCustomer"}, navigate);    
 
