@@ -342,8 +342,8 @@
                         <span style="font-size:12px;" class = "storeCode" ></span>
                         <span class = "location" style="font-size:12px;" ></span>
                         <br/>
-                        <span style="font-size:12px;" class = "noItems" ></span>
-                        <span style="font-size:12px;" class = "total" ></span>
+                        <span style="font-size:12px;" class = "noItems" >1 items</span>
+                        <span style="font-size:12px;" class = "total" >546</span>
                         <input type = "hidden" class = "hidden storeId"  />
                     </a>
                 </div>

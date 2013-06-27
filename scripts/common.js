@@ -14,7 +14,7 @@ $(document).bind("mobileinit", function() {
 	$.mobile.defaultPageTransition = 'none'; 
 	$.mobile.defaultDialogTransition = 'none';
 	$.mobile.loadingMessageTextVisible = true; 
-	$.mobile.buttonMarkup.hoverDelay = 0;
+	$.mobile.buttonMarkup.hoverDelay = 30;
 });
 
 $(document).on('pagebeforeshow', '#saleOrderSelectCustomer',  function(){
@@ -47,10 +47,14 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
     return false;
 
 }).delegate('#saleOrderSelectCustomer', 'pageshow', function() {
+	onResize();
+    $(window).off('resize').on('resize', onResize);
     return false;
 }).delegate('#saleOrderEntry', 'pageshow', function() {
 	var selectedOrder;
 	var quantity;
+	var noItems = 0;
+	var total = 0;
 	if(editMode){
 		var selectedIndex = getObject(orders.pendingOrders,'selectedOrder',true);
 		selectedOrder = orders.pendingOrders[selectedIndex].items;
@@ -60,20 +64,26 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
 	
 	$('#ui-items').children(".added").remove();  
 	$.each(selectedOrder,function(i,record){
+		noItems++;
 		node = $(".template",$("#ui-items")).clone().removeClass("template");
         $(".productName",node).html(record.productName);
         $(".category",node).html(record.category);
         if(record.offerquantity == 0 || record.offerquantity == ''){
-        	quantity  = "Qty " + record.quantity;
+        	quantity  = " Qty: " + record.quantity;
         }
         else{
-        	quantity  = "Qty " + record.quantity + "/" + record.offerquantity;
+        	quantity  = " Qty: " + record.quantity + "/" + record.offerquantity;
         }
+        total += parseFloat(record.unitprice) * parseFloat(record.quantity);
         $(".quantity",node).html(quantity);
         $(".productId",node).val(record.productId);
+        $(".unitprice",node).html("Price: " + record.unitprice);
         $(node).addClass("added");
         $(node).appendTo("#ui-items");
 	});
+	$(".noItems").text(noItems + " item(s) ");
+	$(".total").text(" Rs" +total);
+	bindEvents();
     return false;
 }).delegate('#saleOrders', 'pageshow', function() {
 	var orders = Store.get("order." + Store.get("user").Userid);
@@ -120,7 +130,6 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
  	});
     return false;
 }).delegate('#settings', 'pageshow', function() {
-    bindEvents();
     return false;
 }).delegate('#savedOrder', 'pageshow', function() {
 	$("#btnExit").off("tap").on("tap",function(event){
@@ -149,7 +158,7 @@ $(document).delegate('#saleOrderSelectCustomer', 'pageinit', function() {
 		$("#btnAddNext").closest("div").hide();
 		$("#btnFinish").closest("div").hide();	
 	}	
-    bindEvents();
+	bindEvents();
     return false;
 });
 
