@@ -14,7 +14,7 @@ $(document).bind("mobileinit", function() {
 	$.mobile.defaultPageTransition = 'none'; 
 	$.mobile.defaultDialogTransition = 'none';
 	$.mobile.loadingMessageTextVisible = true; 
-	$.mobile.buttonMarkup.hoverDelay = 30;
+	$.mobile.buttonMarkup.hoverDelay = 40;
 });
 
 $(document).on('pagebeforeshow', '#saleOrderSelectCustomer',  function(){

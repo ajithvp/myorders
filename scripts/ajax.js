@@ -278,7 +278,7 @@ var orders = {
 		}
 		if($.trim($("#quantity").val()) == '' || isNaN($.trim($("#quantity").val()))){
 			$("#quantity").val('');
-			throw "Product not selected";
+			throw "Invalid quantity";
 			return false;
 		}
 		if(isNaN($.trim($("#offerquantity").val()))){
@@ -296,16 +296,17 @@ var orders = {
 		}
 		try{
 			orders.validateItem();
+			var product = getObjects(Store.get("products."+Store.get("user").Userid),'pmProductId',$("#productId").val(),'exact');	
 			var item = { 'productId' : $("#productId").val(),
 					 'productName' : $("#product").val(),
 					 'category' : $("#category option:selected").text(),
 					 'quantity' : $("#quantity").val(),
-					 'offerquantity' : $("#offerquantity").val()		
+					 'offerquantity' : $("#offerquantity").val(),
+					 'unitprice' : product[0]["pmMRP"],
 					};
 			orders.pendingOrders[selectedIndex].items.push(item);
 			$("#productId").val('');
 			$("#product").val('');
-			//$("#category").val('Category').change();
 			$("#quantity").val('');
 			$("#offerquantity").val('');
 		}catch(e){
