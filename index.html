@@ -4,15 +4,15 @@
         <title>GetMyOrder</title>
         <link 	rel="stylesheet" href="style/theme.min.css" />
         <link 	rel="stylesheet" href="style/jquery.mobile.structure-1.3.0.min.css" />
-        <link 	rel="stylesheet" href="style/extra.min.css" />
+        <link 	rel="stylesheet" href="style/extra.css" />
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="cordova-2.7.0.js"></script>
         <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>     
         <script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="scripts/jquery.mobile-1.3.0.min.js"></script>
         <script type="text/javascript" src="scripts/library.min.js"></script>
-        <script type="text/javascript" src="scripts/common.min.js"></script>
-        <script type="text/javascript" src="scripts/ajax.min.js"></script>
+        <script type="text/javascript" src="scripts/common.js"></script>
+        <script type="text/javascript" src="scripts/ajax.js"></script>
     </head>
     <body>
 <div data-role="page" id="saleOrderSelectCustomer" data-theme="b">
@@ -45,8 +45,12 @@
                     </a>
                 </h3>
                 <div class="ui-collapsible-content ui-body-c ui-collapsible-content-collapsed">
-                    <p>
-                    </p>
+                       	<select id="area" >
+                			<option>Area</option>
+            			</select>
+            			<select id="division" >
+                			<option>Division</option>
+            			</select>
                 </div>
             </div>
 
@@ -60,7 +64,13 @@
                                     <br/>
                                     <span class = "sub1" >Code:</span><span class = "sub1 storeCode" ></span>
                                     <span class = "sub2 location" ></span>
+                                    <br/>
+                                    <span class = "sub3" >Division:</span><span class = "sub3 divisionName" ></span>
+                                    <span class = "sub3" >Area:</span><span class = "sub3 areaName" ></span>
                                     <input type = "hidden" class = "hidden storeId" />
+                                    <input type = "hidden" class = "hidden divisionId" />
+                                    <input type = "hidden" class = "hidden divisionCode" />
+                                    <input type = "hidden" class = "hidden areaId" />
                                 </a>
                             </div>
                             <span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
@@ -149,7 +159,13 @@
                                     <br/>
                                     <span class = "sub1" >Code:</span><span class = "sub1 storeCode" ></span>
                                     <span class = "sub2 location" ></span>
+                                    <br/>
+                                    <span class = "sub3" >Division:</span><span class = "sub3 divisionName" ></span>
+                                    <span class = "sub3" >Area:</span><span class = "sub3 areaName" ></span>
                                     <input type = "hidden" class = "hidden storeId" />
+                                    <input type = "hidden" class = "hidden divisionId" />
+                                    <input type = "hidden" class = "hidden divisionCode" />
+                                    <input type = "hidden" class = "hidden areaId" />
                                 </a>
                             </div>
                             <span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
@@ -451,12 +467,17 @@
                     <a class="ui-link-inherit" >
                         <strong style="color:#FFFFFF; " class = "storeName"></strong>
                         <br/>
-                        <span style="font-size:11px;" class = "storeCode" ></span>
-                        <span class = "location" style="font-size:12px;" ></span>
+                        <span class = "sub3 storeCode" ></span>
+                        <span class = "sub3 location"  ></span>
+                        <span class = "sub3">Division:</span><span class = "sub3 divisionName" ></span>
+                        <span class = "sub3">Area:</span><span class = "sub3 areaName" ></span>
                         <br/>
                         <span style="font-size:12px;" class = "noItems" ></span>
                         <span style="font-size:12px;" class = "total" ></span>
                         <input type = "hidden" class = "hidden storeId"  />
+                        <input type = "hidden" class = "hidden areaId"  />
+                        <input type = "hidden" class = "hidden divisionId"  />
+                        <input type = "hidden" class = "hidden divisionCode"  />
                     </a>
                 </div>
             </div>
@@ -476,7 +497,7 @@
                                 <a  class="viewItem editItem ui-link-inherit" >
                                     <strong class = "productName" ></strong>
                                     <br/>
-                                    <span class = "sub2 unitprice" >gdf</span>
+                                    <span class = "sub2 unitprice" ></span>
                                     <span class = "sub2 quantity" ></span>
                                     <span style="font-size:12px;color:gray;" class = "sub1 category" ></span>
                                     <input type = "hidden" class = "hidden productId" />
@@ -587,6 +608,7 @@
             <label for="product">Product:</label>
             <input type="search" id="product" placeholder="Enter Product" />
             <input type="hidden" id="productId" />
+            <input type="hidden" id="productCode" />
             <div id="searchResultsProducts" >
                 <ul class="ui-listview ui-listview-inset ui-corner-all" id = "ui-results-products">
                     <li class="ui-btn ui-li ui-corner-all ui-btn-up-a template"  >
@@ -597,6 +619,7 @@
                                     <br/>
                                     <span class = "sub1 productCode" ></span>
                                     <input type = "hidden" class = "hidden productId" />
+                                    <input type = "hidden" class = "hidden productCode" />
                                 </a>
                             </div>
                         </div>
@@ -670,7 +693,13 @@
                                     <span class = "sub1" >Code:</span>
                                     <span class = "sub1 storeCode" ></span>
                                     <span class = "sub2 location" ></span>
+                                    <br/>
+                                    <span class = "sub3" >Division:</span><span class = "sub3 divisionName" ></span>
+                                    <span class = "sub3" >Area:</span><span class = "sub3 areaName" ></span>
                                     <input type = "hidden" class = "hidden storeId" />
+                                    <input type = "hidden" class = "hidden divisionId" />
+                                    <input type = "hidden" class = "hidden divisionCode" />
+                                    <input type = "hidden" class = "hidden areaId" />
                                     <input type = "hidden" class = "hidden serialNo" />
                                 </a>
                             </div>
