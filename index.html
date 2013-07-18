@@ -15,6 +15,23 @@
         <script type="text/javascript" src="scripts/ajax.min.js"></script>
     	<script type="text/javascript" charset="utf-8">
         	document.addEventListener("deviceready", onDeviceReady, true); 
+        	function onDeviceReady() {
+    			alert("deviceready");
+    			document.addEventListener("backbutton", onBackKeyDown, true);
+			}
+			function onBackKeyDown(e) {
+				alert("back button");
+				e.preventDefault();
+				alert($.mobile.activePage);
+				alert(Store.isSet("user"));
+    			if($.mobile.activePage.is('#saleOrderSelectCustomer') || $.mobile.activePage.is('#login') || Store.isSet("user") === false){
+        			navigator.app.exitApp();
+    			}else {
+        			navigator.app.backHistory()
+    			}
+    			return false;
+			}
+
     	</script>
 
     </head>
